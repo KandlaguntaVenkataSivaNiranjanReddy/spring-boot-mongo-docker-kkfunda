@@ -18,6 +18,10 @@
 		<spring-boot.version>2.1.5.RELEASE</spring-boot.version>
 		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
 		<logstash-logback-encoder.version>6.1</logstash-logback-encoder.version>
+		<!-- SonarQube properties -->
+		<sonar.projectKey>com.kk:spring-boot-mongo</sonar.projectKey>
+		<sonar.host.url>http://your.sonar.server</sonar.host.url>
+		<sonar.login>${env.SONAR_TOKEN}</sonar.login>
 	</properties>
 
 	<dependencyManagement>
@@ -83,6 +87,16 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<url>http://your.repository.url/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://your.repository.url/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<build>
 		<plugins>
 			<plugin>
