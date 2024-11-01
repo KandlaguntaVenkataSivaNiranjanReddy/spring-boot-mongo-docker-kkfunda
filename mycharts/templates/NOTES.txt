@@ -1,0 +1,3 @@
+1. Spring App Service is available at NodePort: {{ .Values.springapp.service.port }}
+2. MongoDB Service is accessible within the cluster at: {{ .Release.Name }}-mongosvc:{{ .Values.mongodb.service.port }}
+3. Run `helm test <release-name>` to verify connectivity between Spring App and MongoDB.
