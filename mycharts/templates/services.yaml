@@ -1,0 +1,26 @@
+# Spring App Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: springappsvc
+spec:
+  type: {{ .Values.springapp.service.type }}
+  selector:
+    app: springapp
+  ports:
+    - port: {{ .Values.springapp.service.port }}
+      targetPort: {{ .Values.springapp.service.targetPort }}
+
+---
+# MongoDB Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongosvc
+spec:
+  type: {{ .Values.mongodb.service.type }}
+  selector:
+    app: mongodb
+  ports:
+    - port: {{ .Values.mongodb.service.port }}
+      targetPort: 27017
