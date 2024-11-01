@@ -1,0 +1,34 @@
+# MongoDB Test Connection
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ .Release.Name }}-test-connection-mongo"
+  labels:
+    app: mongodb
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ["{{ .Release.Name }}-mongosvc:{{ .Values.mongodb.service.port }}"]
+  restartPolicy: Never
+
+---
+# Spring App Test Connection
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ .Release.Name }}-test-connection-springapp"
+  labels:
+    app: springapp
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ["{{ .Release.Name }}-springappsvc:{{ .Values.springapp.service.port }}"]
+  restartPolicy: Never
