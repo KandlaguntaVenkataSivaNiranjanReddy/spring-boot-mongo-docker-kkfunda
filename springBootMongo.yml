@@ -4,7 +4,7 @@ metadata:
   name: springappconfigmap
 data:
   username: springapp
-  password: mongodb@123
+  password: mongod123
 
 ---
 apiVersion: v1
@@ -60,7 +60,7 @@ spec:
     spec:
       containers:
       - name: springappcontainer
-        image: niranjanreddy1231/mongospring
+        image: karthik56t/mongospring:latest
         ports:
         - containerPort: 8080
         env:
